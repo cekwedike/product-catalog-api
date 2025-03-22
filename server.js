@@ -6,6 +6,8 @@ const categoryRoutes = require('./routes/categoryRoutes');
 const errorHandler = require('./middleware/errorMiddleware');
 const authMiddleware = require('./middleware/authMiddleware');
 const rateLimit = require('./middleware/rateLimit');
+const cors = require('cors');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
