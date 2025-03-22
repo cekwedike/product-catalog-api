@@ -35,11 +35,14 @@
 }
 ```
 Search Products
+```
 GET /api/products?name=shirt&minPrice=20&maxPrice=50
+```
 
 Get Low Stock Items
+```
 GET /api/products?lowStock=10
-
+```
 Testing
 Use Postman or curl:
 
