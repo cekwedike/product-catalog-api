@@ -19,6 +19,21 @@ router.post('/',
 
 router.get('/', productController.getProducts);
 
-// Add other routes (GET/:id, PUT, DELETE)
+// Add these routes
+router.get('/:id', productController.getProductById);
+router.put('/:id',
+  [
+    body('name').optional().notEmpty(),
+    body('description').optional().notEmpty(),
+    body('category').optional().isMongoId(),
+    body('variants').optional().isArray(),
+    body('variants.*.color').optional().notEmpty(),
+    body('variants.*.size').optional().notEmpty(),
+    body('variants.*.price').optional().isFloat({ min: 0 }),
+    body('variants.*.inventory').optional().isInt({ min: 0 }),
+  ],
+  productController.updateProduct
+);
+router.delete('/:id', productController.deleteProduct);
 
 module.exports = router;
