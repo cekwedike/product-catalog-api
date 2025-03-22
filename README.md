@@ -42,6 +42,8 @@ GET /api/products?lowStock=10
 
 Testing
 Use Postman or curl:
+
+```bash
 curl -X POST -H "Content-Type: application/json" -d '{
   "name": "Sample Product",
   "description": "Test product",
@@ -53,7 +55,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "inventory": 50
   }]
 }' http://localhost:5000/api/products
-
+```
 
 **Implementation Notes:**
 1. Uses MongoDB with Mongoose for data modeling
