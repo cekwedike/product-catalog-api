@@ -8,14 +8,27 @@ const authMiddleware = require('./middleware/authMiddleware');
 const rateLimit = require('./middleware/rateLimit');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpecs = require('./config/swagger');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// CORS configuration
+const corsOptions = {
+  origin: '*', // Allow requests from any origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+};
+
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(rateLimit);
+
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -27,7 +40,8 @@ app.use(errorHandler);
 
 // Start server
 connectDB().then(() => {
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
+    console.log(`Swagger UI available at http://localhost:${PORT}/api-docs`);
   });
 });
