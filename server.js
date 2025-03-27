@@ -17,6 +17,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const API_URL = process.env.API_URL || 'https://product-catalog-api-g5rv.onrender.com';
 
+// Trust proxy for HTTPS
+app.set('trust proxy', 1);
+
 // CORS configuration
 const corsOptions = {
   origin: '*', // Allow requests from any origin
