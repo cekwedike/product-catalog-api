@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog API</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen">
+        <!-- Hero Section -->
+        <div class="gradient-bg text-white">
+            <div class="container mx-auto px-4 py-16">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Product Catalog API</h1>
+                    <p class="text-xl md:text-2xl mb-8">A powerful RESTful API for managing your product catalog</p>
+                    <a href="/api-docs" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                        View Documentation
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Authentication</h3>
+                    <p class="text-gray-600">Secure JWT-based authentication for all API endpoints</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Products</h3>
+                    <p class="text-gray-600">Full CRUD operations for product management</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Categories</h3>
+                    <p class="text-gray-600">Organize products with category management</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Endpoints Section -->
+        <div class="bg-gray-50 py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Available Endpoints</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4">Authentication</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>POST /api/auth/register</li>
+                            <li>POST /api/auth/login</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4">Products</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>GET /api/products</li>
+                            <li>POST /api/products</li>
+                            <li>GET /api/products/:id</li>
+                            <li>PUT /api/products/:id</li>
+                            <li>DELETE /api/products/:id</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4">Categories</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>GET /api/categories</li>
+                            <li>POST /api/categories</li>
+                            <li>GET /api/categories/:id</li>
+                            <li>PUT /api/categories/:id</li>
+                            <li>DELETE /api/categories/:id</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-4 text-center">
+                <p>&copy; 2024 Product Catalog API. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 
