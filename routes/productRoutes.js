@@ -34,7 +34,7 @@ const productController = require('../controllers/productController');
  *                   stock:
  *                     type: number
  */
-router.get('/', productController.getAllProducts);
+router.get('/', productController.getProducts);
 
 /**
  * @swagger
