@@ -27,6 +27,20 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(rateLimit);
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to Product Catalog API',
+    version: '1.0.0',
+    documentation: `${process.env.API_URL}/api-docs`,
+    endpoints: {
+      auth: `${process.env.API_URL}/api/auth`,
+      products: `${process.env.API_URL}/api/products`,
+      categories: `${process.env.API_URL}/api/categories`
+    }
+  });
+});
+
 // Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
@@ -42,6 +56,6 @@ app.use(errorHandler);
 connectDB().then(() => {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`Swagger UI available at http://localhost:${PORT}/api-docs`);
+    console.log(`Swagger UI available at ${process.env.API_URL}/api-docs`);
   });
 });
