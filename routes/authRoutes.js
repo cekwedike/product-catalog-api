@@ -1,22 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { generateToken, comparePassword } = require('../config/auth');
+const User = require('../models/User');
 
-// In a real application, you would have a User model and database
-const mockUsers = {
-  admin: {
-    id: '1',
-    username: 'admin',
-    password: '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' // bcrypt hash of "password"
-  }
-};
-
+// Login route
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
-
-    // Find user (in a real app, this would be a database query)
-    const user = mockUsers[username];
+    
+    // Find user
+    const user = await User.findOne({ username });
     if (!user) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
@@ -30,9 +23,8 @@ router.post('/login', async (req, res) => {
     // Generate token
     const token = generateToken(user.id);
     res.json({ token });
-
   } catch (error) {
-    res.status(500).json({ error: 'Authentication failed' });
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
