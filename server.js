@@ -11,6 +11,7 @@ const authRoutes = require('./routes/authRoutes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./config/swagger');
 const path = require('path');
+const securityHeaders = require('./middleware/securityHeaders');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,6 +29,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(rateLimit);
+app.use(securityHeaders);
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
