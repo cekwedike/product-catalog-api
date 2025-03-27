@@ -71,7 +71,6 @@ app.use(errorHandler);
 connectDB().then(() => {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`Swagger UI available at ${API_URL}/api-docs/`);
-    console.log(`API Documentation available at ${API_URL}/api-docs/`);
+    console.log(`API Documentation (Swagger UI) available at ${API_URL}/api-docs/`);
   });
 });
