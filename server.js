@@ -14,6 +14,7 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const API_URL = process.env.API_URL || 'https://product-catalog-api-g5rv.onrender.com';
 
 // CORS configuration
 const corsOptions = {
@@ -41,11 +42,11 @@ app.get('/api', (req, res) => {
   res.json({
     message: 'Welcome to Product Catalog API',
     version: '1.0.0',
-    documentation: `${process.env.API_URL}/api-docs`,
+    documentation: `${API_URL}/api-docs/`,
     endpoints: {
-      auth: `${process.env.API_URL}/api/auth`,
-      products: `${process.env.API_URL}/api/products`,
-      categories: `${process.env.API_URL}/api/categories`
+      auth: `${API_URL}/api/auth`,
+      products: `${API_URL}/api/products`,
+      categories: `${API_URL}/api/categories`
     }
   });
 });
@@ -65,6 +66,7 @@ app.use(errorHandler);
 connectDB().then(() => {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`Swagger UI available at ${process.env.API_URL}/api-docs`);
+    console.log(`Swagger UI available at ${API_URL}/api-docs/`);
+    console.log(`API Documentation available at ${API_URL}/api-docs/`);
   });
 });
