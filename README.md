@@ -1,160 +1,126 @@
 # Product Catalog API
 
-A RESTful API for managing a product catalog with authentication, built with Node.js, Express, and MongoDB.
+A powerful RESTful API for managing your product catalog. Developed by [Chidiebere Ekwedike](https://github.com/cekwedike), a software engineering student at the African Leadership University, Rwanda.
 
 ## Features
-- Full CRUD for products and categories
-- Product variants with inventory tracking
-- Search/filter products by multiple criteria
-- Discount support
-- Low stock reporting
-- User authentication with JWT
-- Rate limiting
-- API documentation with Swagger UI
-- CORS enabled
+
+- 🔐 Secure JWT-based authentication
+- 📦 Full CRUD operations for products
+- 🏷️ Category management
+- 📚 Comprehensive API documentation with Swagger UI
+- 🛡️ Rate limiting and security headers
+- 🌐 CORS enabled
+- 🔍 Input validation
+- ⚡ Error handling middleware
+
+## Live Demo
+
+- API Documentation: [https://product-catalog-api-g5rv.onrender.com/api-docs/](https://product-catalog-api-g5rv.onrender.com/api-docs/)
+- Landing Page: [https://product-catalog-api-g5rv.onrender.com/](https://product-catalog-api-g5rv.onrender.com/)
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
 - MongoDB Atlas account
-- npm or yarn
-
-## Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
-
-```env
-# Server Configuration
-PORT=5000
-NODE_ENV=development
-
-# MongoDB Configuration
-MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/product_catalog?retryWrites=true&w=majority
-
-# JWT Configuration
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-
-# API URL (for Swagger documentation)
-API_URL=https://your-api-domain.com
-
-# Rate Limiting
-RATE_LIMIT_WINDOW_MS=900000  # 15 minutes
-RATE_LIMIT_MAX_REQUESTS=100
-```
+- npm or yarn package manager
 
 ## Installation
 
 1. Clone the repository:
-```bash
-git clone <repository-url>
-cd product-catalog-api
-```
+   ```bash
+   git clone https://github.com/cekwedike/product-catalog-api.git
+   cd product-catalog-api
+   ```
 
 2. Install dependencies:
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-## Running the Application
+3. Create a `.env` file in the root directory:
+   ```env
+   PORT=5000
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   API_URL=http://localhost:5000
+   ```
 
-### Development
-```bash
-npm run dev
-```
-
-### Production
-```bash
-npm start
-```
-
-## API Documentation
-
-Once the server is running, you can access the Swagger UI documentation at:
-- Development: `http://localhost:5000/api-docs`
-- Production: `https://your-api-domain.com/api-docs`
-
-## Deployment
-
-### Option 1: Deploy to Heroku
-
-1. Create a Heroku account and install the Heroku CLI
-2. Login to Heroku:
-```bash
-heroku login
-```
-
-3. Create a new Heroku app:
-```bash
-heroku create your-app-name
-```
-
-4. Set up environment variables in Heroku:
-```bash
-heroku config:set MONGODB_URI=your_mongodb_uri
-heroku config:set JWT_SECRET=your_jwt_secret
-heroku config:set API_URL=https://your-app-name.herokuapp.com
-```
-
-5. Deploy to Heroku:
-```bash
-git push heroku main
-```
-
-### Option 2: Deploy to DigitalOcean
-
-1. Create a DigitalOcean account
-2. Create a new droplet with Node.js
-3. Clone the repository on the droplet
-4. Set up environment variables
-5. Install PM2:
-```bash
-npm install -g pm2
-```
-
-6. Start the application:
-```bash
-pm2 start server.js
-```
-
-### Option 3: Deploy to AWS
-
-1. Create an AWS account
-2. Set up an EC2 instance or use Elastic Beanstalk
-3. Configure environment variables
-4. Deploy using AWS CLI or Elastic Beanstalk
-
-## Security Considerations
-
-1. Change the JWT_SECRET in production
-2. Set up proper CORS configuration for your domain
-3. Enable HTTPS
-4. Set up proper logging
-5. Configure proper error handling
-6. Use environment variables for sensitive data
+4. Start the server:
+   ```bash
+   npm start
+   ```
 
 ## API Endpoints
 
 ### Authentication
-- POST `/api/auth/register` - Register a new user
-- POST `/api/auth/login` - Login user
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login user
 
 ### Products
-- GET `/api/products` - Get all products
-- POST `/api/products` - Create a new product
-- GET `/api/products/:id` - Get a product by ID
-- PUT `/api/products/:id` - Update a product
-- DELETE `/api/products/:id` - Delete a product
+- `GET /api/products` - Get all products
+- `POST /api/products` - Create a new product
+- `GET /api/products/:id` - Get a single product
+- `PUT /api/products/:id` - Update a product
+- `DELETE /api/products/:id` - Delete a product
 
 ### Categories
-- GET `/api/categories` - Get all categories
-- POST `/api/categories` - Create a new category
-- GET `/api/categories/:id` - Get a category by ID
-- PUT `/api/categories/:id` - Update a category
-- DELETE `/api/categories/:id` - Delete a category
+- `GET /api/categories` - Get all categories
+- `POST /api/categories` - Create a new category
+- `GET /api/categories/:id` - Get a single category
+- `PUT /api/categories/:id` - Update a category
+- `DELETE /api/categories/:id` - Delete a category
+
+## Security Features
+
+- JWT-based authentication
+- Password hashing with bcrypt
+- Rate limiting
+- Security headers
+- Input validation
+- Error handling
+- CORS configuration
+
+## Deployment
+
+This API is deployed on Render.com. To deploy your own instance:
+
+1. Create a Render account
+2. Connect your GitHub repository
+3. Create a new Web Service
+4. Set the following environment variables:
+   ```
+   PORT=5000
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   NODE_ENV=production
+   API_URL=https://your-render-url.onrender.com
+   ```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-ISC
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+- **Chidiebere Ekwedike**
+  - GitHub: [@cekwedike](https://github.com/cekwedike)
+  - LinkedIn: [Chidiebere Ekwedike](https://www.linkedin.com/in/chidiebere-ekwedike/)
+  - Email: chidiebere.ekwedike@alustudent.com
+
+## Acknowledgments
+
+- African Leadership University, Rwanda
+- MongoDB Atlas
+- Render.com
+- Express.js community
 
 **Implementation Notes:**
 1. Uses MongoDB with Mongoose for data modeling
