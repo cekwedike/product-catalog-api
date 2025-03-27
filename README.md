@@ -112,8 +112,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Chidiebere Ekwedike**
   - GitHub: [@cekwedike](https://github.com/cekwedike)
-  - LinkedIn: [Chidiebere Ekwedike](https://www.linkedin.com/in/chidiebere-ekwedike/)
-  - Email: chidiebere.ekwedike@alustudent.com
+  - LinkedIn: [Chidiebere Ekwedike](https://www.linkedin.com/in/cheediwrites/)
+  - Email: [c.ekwedike@alustudent.com](mailto:c.ekwedike@alustudent.com)
 
 ## Acknowledgments
 
