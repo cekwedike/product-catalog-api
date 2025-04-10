@@ -1,31 +1,68 @@
 const express = require('express');
 const router = express.Router();
-const { generateToken, comparePassword } = require('../config/auth');
-const User = require('../models/User');
+const { body, validationResult } = require('express-validator');
+const authController = require('../controllers/authController');
 
-// Login route
-router.post('/login', async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    
-    // Find user
-    const user = await User.findOne({ username });
-    if (!user) {
-      return res.status(401).json({ error: 'Invalid credentials' });
-    }
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Register a new user
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - username
+ *               - password
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: User registered successfully
+ *       400:
+ *         description: Invalid input
+ */
+router.post('/register',
+  [
+    body('username').notEmpty().isLength({ min: 3 }),
+    body('password').notEmpty().isLength({ min: 6 })
+  ],
+  authController.register
+);
 
-    // Verify password
-    const validPassword = await comparePassword(password, user.password);
-    if (!validPassword) {
-      return res.status(401).json({ error: 'Invalid credentials' });
-    }
-
-    // Generate token
-    const token = generateToken(user.id);
-    res.json({ token });
-  } catch (error) {
-    res.status(500).json({ error: 'Server error' });
-  }
-});
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Login user
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - username
+ *               - password
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *       401:
+ *         description: Invalid credentials
+ */
+router.post('/login', authController.login);
 
 module.exports = router;
